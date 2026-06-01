@@ -1,0 +1,12 @@
+# In terminal for headless mode- pytest PlaywrightPractice\OpeningBrowser.py -s -v
+# In terminal for headed mode- pytest PlaywrightPractice\OpeningBrowser.py --headed -v
+# By default if we run through IDE, it's run in headless mode.
+# To run a particular test case or function- pytest OpeningBrowser.py::test_verifyPageTitle --headed -v
+# To run in a specific browser- pytest OpeningBrowser.py::test_verifyPageTitle --headed -v --browser firefox
+# To run in multiple browser- pytest OpeningBrowser.py::test_verifyPageTitle --headed -v --browser firefox --browser chromium
+# To run multiple test functions in parallel execution- we have to install a plugin- x-dist, then command is "pytest OpeningBrowser.py -s -v --headed --numprocesses=2"
+# To run the test function in headed mode directly we have to first right click on python file
+---> choose More Run/Debug
+---> choose Modify Run configuration
+---> Additional Arguments
+---> --headed
