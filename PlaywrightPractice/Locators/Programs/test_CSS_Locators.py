@@ -3,6 +3,9 @@ from playwright.sync_api import Page, expect
 def test_verify_css(page:Page):
     page.goto("https://demowebshop.tricentis.com/")
 
+    total=page.locator("div>a[href*='computer']").count()
+    print(total)
+
 # tag id
     # page.locator("input#small-searchterms").fill("T-Shirts")
     # page.locator("#small-searchterms").fill("T-Shirts")
@@ -20,7 +23,6 @@ def test_verify_css(page:Page):
 
 # tag class attribute
 #     page.locator("input.search-box-text[value='Search store']").fill("T-Shirts")
-    page.locator(".search-box-text[value='Search store']").fill("T-Shirts")
-    page.wait_for_timeout(2000)
-
+#     page.locator(".search-box-text[value='Search store']").fill("T-Shirts")
+#     page.wait_for_timeout(2000)
 

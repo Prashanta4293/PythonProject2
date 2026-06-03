@@ -11,7 +11,7 @@
 # CSS (Highly preferred)
 
 NOTE:-
-* Every web page create a DOM (Document Object Module) at run time.
+* Every web page create a DOM (Document Object Model) at run time.
 * All types of locators directly (Xpath and CSS) or indirectly (Playwright built in locators) interact with DOM.
 
 1- Playwright built in locators
