@@ -35,6 +35,37 @@ def test_checkbox(page:Page):
         expect(checkbox).to_be_checked()
         page.wait_for_timeout(1000)
 
+    # Uncheck the last 3
+    for checkbox in checkboxes[-1:-9:-2]:
+        checkbox.uncheck()
+        expect(checkbox).not_to_be_checked()
+        page.wait_for_timeout(1000)
+
+    # Toggle checkbox
+    for checkbox in checkboxes:
+        if checkbox.is_checked():
+            checkbox.uncheck()
+            page.wait_for_timeout(1000)
+        else:
+            checkbox.check()
+            page.wait_for_timeout(1000)
+
+    # Random checkbox selected- 1,3,6
+    indexes= [1,3,5]
+
+    for i in indexes:
+        checkboxes[i].check()
+        page.wait_for_timeout(1000)
+
+    # Verify checkbox by label
+    week = "Sunday"
+
+    for i in days:
+        if i==week:
+            page.get_by_label(week).uncheck()
+            page.wait_for_timeout(1000)
+
+
 
 
 
