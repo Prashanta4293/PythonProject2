@@ -1,0 +1,22 @@
+[
+  {
+    "user": "Admin1",
+    "pwd": "admin121",
+    "validity": "invalid"
+  },
+  {
+    "user": "Admi",
+    "pwd": "admin1",
+    "validity": "invalid"
+  },
+  {
+    "user": "Admin",
+    "pwd": "admin123",
+    "validity": "valid"
+  },
+  {
+    "user": "",
+    "pwd": "",
+    "validity": "invalid"
+  }
+]
