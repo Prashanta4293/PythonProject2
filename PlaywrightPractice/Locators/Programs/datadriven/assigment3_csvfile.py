@@ -1,14 +1,18 @@
 import pytest
 from playwright.sync_api import Page, expect
-import json
+import csv
 
-# Read json file
-file=open("PlaywrightPractice/Locators/Programs/testdata/data.json","r")
-test_data=json.load(file)
+test_data= [] #empty list
+
+# Read csv file
+csvfile=open("PlaywrightPractice/Locators/Programs/testdata/data.csv",newline='', encoding="utf-8")
+reader=csv.DictReader(csvfile)
+for row in reader:
+    test_data.append((row["user"],row["pwd"],row["validity"]))
 
 
-@pytest.mark.parametrize("user,pwd,validity",[(data["user"],data["pwd"],data["validity"])for data in test_data])
-def test_verifyLoginPage(user,pwd,validity,page:Page):
+@pytest.mark.parametrize("user,pwd,validity",test_data)
+def test_verifyLoginPage_csv(user,pwd,validity,page:Page):
     page.goto("https://opensource-demo.orangehrmlive.com/web/index.php/auth/login")
     page.get_by_placeholder("Username").fill(user)
     page.get_by_placeholder("Password").fill(pwd)
@@ -25,8 +29,4 @@ def test_verifyLoginPage(user,pwd,validity,page:Page):
     else:
         expect(for_blank).to_be_visible(timeout=10000)
         expect(page).to_have_url("https://opensource-demo.orangehrmlive.com/web/index.php/auth/login")
-
-
-
-
 

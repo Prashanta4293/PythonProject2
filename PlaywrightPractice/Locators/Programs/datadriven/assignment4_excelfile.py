@@ -1,13 +1,21 @@
 import pytest
 from playwright.sync_api import Page, expect
+import openpyxl #pip install openpyxl
 
-test_data=[('Admin1','admin121','invalid'),
-           ('Admi','admin1','invalid'),
-           ('Admin','admin123','valid'),
-           ('','','invalid')]
+test_data= [] #empty list
+
+# Read excel file
+workbook=openpyxl.load_workbook("PlaywrightPractice/Locators/Programs/testdata/data.xlsx")
+sheet=workbook.active  # or worksheet["Sheetname"]
+
+# Reading data from excel using for loop
+for row in sheet.iter_rows(min_row=2, values_only=True):
+    user, pwd, validity = row
+    test_data.append(((str(user) or ""),(str(pwd) or ""),(str(validity) or "")))
+workbook.close()
 
 @pytest.mark.parametrize("user,pwd,validity",test_data)
-def test_verifyLoginPage(user,pwd,validity,page:Page):
+def test_verifyLoginPage_csv(user,pwd,validity,page:Page):
     page.goto("https://opensource-demo.orangehrmlive.com/web/index.php/auth/login")
     page.get_by_placeholder("Username").fill(user)
     page.get_by_placeholder("Password").fill(pwd)
@@ -18,14 +26,10 @@ def test_verifyLoginPage(user,pwd,validity,page:Page):
 
     # Validation
     if validity=="valid":
-        expect(for_pass).to_be_visible(timeout=10000)
+        expect(for_pass).to_be_visible(timeout=15000)
     elif validity=="invalid":
-        expect(for_fail).to_be_visible(timeout=10000)
+        expect(for_fail).to_be_visible(timeout=15000)
     else:
-        expect(for_blank).to_be_visible(timeout=10000)
+        expect(for_blank).to_be_visible(timeout=15000)
         expect(page).to_have_url("https://opensource-demo.orangehrmlive.com/web/index.php/auth/login")
-
-
-
-
 
