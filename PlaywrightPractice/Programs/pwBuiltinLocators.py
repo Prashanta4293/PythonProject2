@@ -42,7 +42,7 @@ def test_Verify_pwBuiltinLocator(page:Page):
 #     expect(page.get_by_title("Home page link")).to_have_text("Home")
 #     expect(page.get_by_title("HyperText Markup Language")).to_have_text("HTML")
 #
-# # 7) get_by_test_id()
+# 7) get_by_test_id()
 #     expect(page.get_by_test_id("nav-home")).to_have_text("Home")
 
 

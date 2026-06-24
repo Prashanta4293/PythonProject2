@@ -4,7 +4,7 @@ def test_checkbox(page:Page):
     page.goto("https://testautomationpractice.blogspot.com/")
 
     # Select specific checkbox
-    sunday_checkbox= page.get_by_label("SUnday")
+    sunday_checkbox= page.get_by_label("Sunday")
     sunday_checkbox.check()
     expect(sunday_checkbox).to_be_checked()
     page.wait_for_timeout(2000)

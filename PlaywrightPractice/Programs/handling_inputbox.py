@@ -12,7 +12,7 @@ def test_verify_checkbox_radiobtn(page:Page):
 def test_to_check_the_attribute_of_the_element(page:Page):
     page.goto("https://testautomationpractice.blogspot.com/")
     name = page.locator("input#name")
-    expect(name).to_have_attribute("maxlength","15")
+    expect(name).to_have_attribute("maxlength","10")
 
     # get an attribute value of an element
     maxlength= name.get_attribute("maxlength")
