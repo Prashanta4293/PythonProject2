@@ -17,3 +17,26 @@ addopts = --headed
 Step 3: Attach Screenshots on Test Failures (conftest.py)
 Step 4: Create sample tests
 Step 5: Run the Test and generate report
+
+Allure report
+---------------
+Step 1: Install Allure pytest plugin
+        command is "pip install allure-Pytest"
+Step 2: Install Allure command-line tool (to view and generate reports)
+        - Go to "https://github.com/allure-framework/allure2/releases"
+        - Download the latest version
+        - Unzip the downloaded file
+        - take the inside file which contains bin, config, lib, plugin
+          to another place like C drive Program files
+        - After that go to the bin folder and copy the path till bin folder
+          because allure.bat file is there
+        - then set the copied path in system variables 'Path'
+Step 3: Configure Allure in pytest.ini
+        add "[pytest]
+             addopts = --alluredir=reports/allure-results"
+Step 4: Create and Run your tests
+Step 5: Generate and view the Allure report
+        - Go to command prompt and give cmd "allure serve reports/allure-results" (temp report)
+        - Permanent report cmd
+          "allure generate reports/allure-results -o reports/allure-report --clean"
+Step 6: Attach screenshots on test failures (conftest.py)
